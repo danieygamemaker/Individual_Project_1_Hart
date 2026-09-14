@@ -1,0 +1,26 @@
+import os
+
+name = "Daniel Hart"
+
+file_name = input("Enter the messenger file name (including .txt extension): ")
+
+# Check if the file exists in the repository
+if os.path.exists(file_name):
+    # If the file exists, open it, read it, and print its contents
+    print(f"\n--- Contents of {file_name} ---")
+    with open(file_name, "r") as file:
+        print(file.read())
+    print("--------------------------------")
+else:
+    # If the file does not exist, prompt the user to enter a message
+    print(f"'{file_name}' not found. Creating a new file...")
+    user_message = input("Enter your message: ")
+    
+    # Add "[name]: " to the beginning of the user message
+    formatted_message = f"[{name}]: {user_message}"
+    
+    # Create the file and write the message to it
+    with open(file_name, "w") as file:
+        file.write(formatted_message)
+    
+    print(f"Successfully saved your message to {file_name}!")
